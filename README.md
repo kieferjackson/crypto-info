@@ -1,2 +1,6 @@
-# crypto-info
-Web application for information related to popular cryptocurrencies.
+# Crypto-Info
+
+Designed by Jayita Chowdhury, Kiefer Jackson, and Vance Velardez.
+
+---
+
