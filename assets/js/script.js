@@ -110,6 +110,24 @@ fetch(requested_url)
             console.log('Current Info: ');
             console.log(current_info);
 
+            let crypto_symbol_heading = document.createElement("h1");
+            crypto_symbol_heading.innerText = current_crypto.id.toUpperCase();
+
+            let curr_info_text = document.createElement("p");
+            curr_info_text.innerHTML = 
+            `
+                <h3>Price</h3>
+                ${current_info.price} <br>
+                <h3>Percent Change</h3>
+                ${current_info.change} <br>
+                <h3>Last Updated</h3>
+                ${current_info.updated} <br>
+            `;
+
+            // Append elements to current info container
+            current_info_container.appendChild(crypto_symbol_heading);
+            current_info_container.appendChild(curr_info_text);
+
             break;
 
         case 'HISTORICAL_DATA':
