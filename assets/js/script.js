@@ -6,6 +6,21 @@ let current_crypto =
     id:  'bitcoin'      // Short Crypto ID
 };
 
+// NOTE: The following code within the '***'s should be removed once static HTML is implemented. It is only for testing data display
+/*******************************************************************/
+const current_info_container = document.createElement("section");
+current_info_container.className = 'current_info_container';
+document.body.appendChild(current_info_container);
+
+const history_info_container = document.createElement("section");
+history_info_container.className = 'history_info_container';
+document.body.appendChild(history_info_container);
+
+const additional_info_container = document.createElement("section");
+additional_info_container.className = 'additional_info_container';
+document.body.appendChild(additional_info_container);
+/*******************************************************************/
+
 function generate_data () {
     const base_paprika_url = 'https://api.coinpaprika.com/v1/coins/'; // e.g. eth-ethereum, btc-bitcoin
     const base_gecko_value_url = 'https://api.coingecko.com/api/v3/'; // coins/list gives the list of supported cryptocurrencies
@@ -66,6 +81,22 @@ fetch(requested_url)
             console.log('Additional Info: ');
             console.log(additional_info);
 
+            let crypto_heading = document.createElement("h1");
+            crypto_heading.innerText = additional_info.name;
+
+            let add_info_text = document.createElement("p");
+            add_info_text.innerHTML = 
+            `
+                ${additional_info.description} <br>
+                <h3>Links</h3>
+                <a href="${additional_info.website}">${additional_info.website}</a> <br>
+                <a href="${additional_info.source_code}">${additional_info.source_code}</a>
+            `;
+
+            // Append elements to additional info container
+            additional_info_container.appendChild(crypto_heading);
+            additional_info_container.appendChild(add_info_text);
+
             break;
 
         case 'CURRENT_INFO':
@@ -75,7 +106,6 @@ fetch(requested_url)
                 change: data[current_crypto.id].usd_24h_change,
                 updated: convertUnixTimestamp(data[current_crypto.id].last_updated_at)
             }
-            debugger;
 
             console.log('Current Info: ');
             console.log(current_info);
@@ -87,9 +117,6 @@ fetch(requested_url)
 
             // Set this data point to whatever the global data point has been updated to since the API call
             historical_data[iteration] = data_pt;
-
-            console.log(`Data Point ${iteration + 1}: `);
-            console.log(data_pt);
             
             break;
     }
