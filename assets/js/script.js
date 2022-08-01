@@ -73,10 +73,14 @@ imgModalSave.addEventListener('click', function () {
     var newCurrItem = [currType];
     var currencies = localStorage.getItem('cryptos');
     console.log("Currencies after local storaage::" + currencies);
-    var updatedArray = newCurrItem.concat(currencies);
-    console.log("Currencies after concat updatedArray::" + updatedArray);
-    localStorage.removeItem('cryptos');
-    localStorage.setItem('cryptos', updatedArray);
-    modalDlg.classList.remove('is-active');
-
+    if (currencies.includes(currType)) {
+        modalDlg.classList.remove('is-active');
+    }
+    else {
+        var updatedArray = newCurrItem.concat(currencies);
+        console.log("Currencies after concat updatedArray::" + updatedArray);
+        localStorage.removeItem('cryptos');
+        localStorage.setItem('cryptos', updatedArray);
+        modalDlg.classList.remove('is-active');
+    }
 })
