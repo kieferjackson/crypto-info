@@ -2,7 +2,7 @@ var historical_data = [];
 
 function generate_data () {
     const base_paprika_url = 'https://api.coinpaprika.com/v1/coins/'; // e.g. eth-ethereum, btc-bitcoin
-    const base_gecko_value_url = 'https://api.coingecko.com/api/v3/coins/'; // coins/list gives the list of supported cryptocurrencies
+    const base_gecko_value_url = 'https://api.coingecko.com/api/v3/'; // coins/list gives the list of supported cryptocurrencies
     // var coin_gecko_versus_url = 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies';
     
     let current_crypto = 
@@ -14,8 +14,15 @@ function generate_data () {
     // Change the Paprika url to query for the currently selected cryptocurrency
     let ca_info_url = base_paprika_url + current_crypto.fid;
     
-    // Generate the additional information for the selected cryptocurrency
+    // Get the additional information for the selected cryptocurrency
     get_api_data(ca_info_url, 'ADDITIONAL_INFO', null);
+
+    // Define the url for current price of selected cryptocurrency
+    const optional_q_parameters = '&include_24hr_change=true&include_last_updated_at=true';
+    let curr_price_url = `${base_gecko_value_url}/simple/price?ids=${current_crypto.id}&vs_currencies=usd${optional_q_parameters}`
+
+    // Get the current price of currently selected cryptocurrency
+    get_api_data(curr_price_url, 'CURRENT_PRICE', null);
     
     const number_of_time_points = 12;
 
@@ -23,7 +30,7 @@ function generate_data () {
     for (var tp = 0 ; tp < number_of_time_points ; tp++) 
     {
         // Define historical data url
-        let hd_url = `${base_gecko_value_url}${current_crypto.id}/history?date=01-${tp + 1}-2017`;
+        let hd_url = `${base_gecko_value_url}coins/${current_crypto.id}/history?date=01-${tp + 1}-2017`;
         get_api_data(hd_url, 'HISTORICAL_DATA', tp);
     }
     
@@ -34,7 +41,7 @@ function generate_data () {
 
 function get_api_data(requested_url, data_to_generate, iteration) 
 {
-API_DATA = fetch(requested_url)
+fetch(requested_url)
     .then( (response) => {
     // Log the requested url address
     console.log(`Data from: ${requested_url}`);
@@ -61,12 +68,25 @@ API_DATA = fetch(requested_url)
 
             break;
 
+        case 'ADDITIONAL_INFO':
+            let current_info = 
+            {
+                price: data[current_crypto.id].usd,
+                change: data[current_crypto.id].usd_24h_change,
+                updated: data[current_crypto.id].last_updated_at
+            }
+
+            console.log('Current Info: ');
+            console.log(current_info);
+
+            break;
+
         case 'HISTORICAL_DATA':
             data_pt = data.market_data.current_price.usd;
 
             // Set this data point to whatever the global data point has been updated to since the API call
             historical_data[iteration] = data_pt;
-            
+
             console.log(`Data Point ${iteration + 1}: `);
             console.log(data_pt);
             
@@ -75,8 +95,6 @@ API_DATA = fetch(requested_url)
 
     return data;
     });
-    
-    return API_DATA;
 }
 
 generate_data();
