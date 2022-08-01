@@ -98,3 +98,61 @@ fetch(requested_url)
 }
 
 generate_data();
+
+var btn = document.querySelector('#showModal');
+var modalDlg = document.querySelector('#image-modal');
+var imageModalCloseBtn = document.querySelector('#image-modal-close');
+var imgModalCancel = document.getElementById('cancel');
+var imgModalSave = document.getElementById('save');
+var currTypeInputEl = $('#project-type-input');
+var cryptoListingView = document.getElementById('divListCrypto');
+// var olListingView = document.getElementById('olListCrypto');
+
+btn.addEventListener('click', function () {
+    modalDlg.classList.add('is-active');
+});
+
+imageModalCloseBtn.addEventListener('click', function () {
+    modalDlg.classList.remove('is-active');
+});
+
+imgModalCancel.addEventListener('click', function () {
+    modalDlg.classList.remove('is-active');
+})
+
+imgModalSave.addEventListener('click', function () {
+    var currType = currTypeInputEl.val();
+    var newCurrItem = [currType];
+    var currencies = localStorage.getItem('cryptos');
+    console.log("Currencies after local storaage::" + currencies);
+    if (currencies != null && currencies.includes(currType)) {
+        modalDlg.classList.remove('is-active');
+    }
+    else {
+        var updatedArray = newCurrItem.concat(currencies);
+        console.log("Currencies after concat updatedArray::" + updatedArray);
+        localStorage.removeItem('cryptos');
+        localStorage.setItem('cryptos', updatedArray);
+        modalDlg.classList.remove('is-active');
+        addItemToView(currType)
+    }
+})
+
+function setCryptoListing() {
+    var cryptoLists = localStorage.getItem('cryptos').split(",");
+
+    cryptoLists.forEach(addItemToView);
+}
+
+function addItemToView(element) {
+    if (element != "") {
+        console.log(element);
+        var entry = document.createElement('div');
+        entry.classList.add("listView");
+        entry.append(element);
+        cryptoListingView.appendChild(entry);
+        cryptoListingView.appendChild(document.createElement('br'));
+    }
+}
+
+setCryptoListing();
