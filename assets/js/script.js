@@ -1,15 +1,15 @@
 var historical_data = [];
 
+let current_crypto = 
+{
+    fid: 'btc-bitcoin', // Full Crypto ID
+    id:  'bitcoin'      // Short Crypto ID
+};
+
 function generate_data () {
     const base_paprika_url = 'https://api.coinpaprika.com/v1/coins/'; // e.g. eth-ethereum, btc-bitcoin
     const base_gecko_value_url = 'https://api.coingecko.com/api/v3/'; // coins/list gives the list of supported cryptocurrencies
     // var coin_gecko_versus_url = 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies';
-    
-    let current_crypto = 
-    {
-        fid: 'btc-bitcoin', // Full Crypto ID
-        id:  'bitcoin'      // Short Crypto ID
-    };
     
     // Change the Paprika url to query for the currently selected cryptocurrency
     let ca_info_url = base_paprika_url + current_crypto.fid;
@@ -21,8 +21,8 @@ function generate_data () {
     const optional_q_parameters = '&include_24hr_change=true&include_last_updated_at=true';
     let curr_price_url = `${base_gecko_value_url}/simple/price?ids=${current_crypto.id}&vs_currencies=usd${optional_q_parameters}`
 
-    // Get the current price of currently selected cryptocurrency
-    get_api_data(curr_price_url, 'CURRENT_PRICE', null);
+    // Get the current information for currently selected cryptocurrency
+    get_api_data(curr_price_url, 'CURRENT_INFO', null);
     
     const number_of_time_points = 12;
 
@@ -68,13 +68,14 @@ fetch(requested_url)
 
             break;
 
-        case 'ADDITIONAL_INFO':
+        case 'CURRENT_INFO':
             let current_info = 
             {
                 price: data[current_crypto.id].usd,
                 change: data[current_crypto.id].usd_24h_change,
-                updated: data[current_crypto.id].last_updated_at
+                updated: convertUnixTimestamp(data[current_crypto.id].last_updated_at)
             }
+            debugger;
 
             console.log('Current Info: ');
             console.log(current_info);
@@ -95,6 +96,18 @@ fetch(requested_url)
 
     return data;
     });
+
+    function convertUnixTimestamp (unix_timestamp)
+    {
+        // Get the date of this timestamp
+        let ts_date = new Date (unix_timestamp * 1000); // 1000 is here to convert to milliseconds
+
+        let month   =   ts_date.toLocaleString("en-US", {month: "numeric"});
+        let day     =   ts_date.toLocaleString("en-US", {day: "numeric"});
+        let year    =   ts_date.toLocaleString("en-US", {year: "numeric"});
+
+        return `${month}/${day}/${year}`;
+    }
 }
 
 generate_data();
