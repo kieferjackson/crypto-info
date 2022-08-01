@@ -1,0 +1,15 @@
+.modal-card{
+    width: 50%;
+    
+}
+
+.form-control{
+    width: 70%;    
+}
+
+.secContainer{
+    box-sizing: border-box;
+    border: solid green;
+    width: 20%;
+    padding-bottom: 10%;    
+}
