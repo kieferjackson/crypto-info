@@ -1,21 +1,43 @@
 var historical_data = [];
 
+let current_crypto = 
+{
+    fid: 'btc-bitcoin', // Full Crypto ID
+    id:  'bitcoin'      // Short Crypto ID
+};
+
+// NOTE: The following code within the '***'s should be removed once static HTML is implemented. It is only for testing data display
+/*******************************************************************/
+const current_info_container = document.createElement("section");
+current_info_container.className = 'current_info_container';
+document.body.appendChild(current_info_container);
+
+const history_info_container = document.createElement("section");
+history_info_container.className = 'history_info_container';
+document.body.appendChild(history_info_container);
+
+const additional_info_container = document.createElement("section");
+additional_info_container.className = 'additional_info_container';
+document.body.appendChild(additional_info_container);
+/*******************************************************************/
+
 function generate_data () {
     const base_paprika_url = 'https://api.coinpaprika.com/v1/coins/'; // e.g. eth-ethereum, btc-bitcoin
-    const base_gecko_value_url = 'https://api.coingecko.com/api/v3/coins/'; // coins/list gives the list of supported cryptocurrencies
+    const base_gecko_value_url = 'https://api.coingecko.com/api/v3/'; // coins/list gives the list of supported cryptocurrencies
     // var coin_gecko_versus_url = 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies';
-    
-    let current_crypto = 
-    {
-        fid: 'btc-bitcoin', // Full Crypto ID
-        id:  'bitcoin'      // Short Crypto ID
-    };
     
     // Change the Paprika url to query for the currently selected cryptocurrency
     let ca_info_url = base_paprika_url + current_crypto.fid;
     
-    // Generate the additional information for the selected cryptocurrency
+    // Get the additional information for the selected cryptocurrency
     get_api_data(ca_info_url, 'ADDITIONAL_INFO', null);
+
+    // Define the url for current price of selected cryptocurrency
+    const optional_q_parameters = '&include_24hr_change=true&include_last_updated_at=true';
+    let curr_price_url = `${base_gecko_value_url}/simple/price?ids=${current_crypto.id}&vs_currencies=usd${optional_q_parameters}`
+
+    // Get the current information for currently selected cryptocurrency
+    get_api_data(curr_price_url, 'CURRENT_INFO', null);
     
     const number_of_time_points = 12;
 
@@ -23,7 +45,7 @@ function generate_data () {
     for (var tp = 0 ; tp < number_of_time_points ; tp++) 
     {
         // Define historical data url
-        let hd_url = `${base_gecko_value_url}${current_crypto.id}/history?date=01-${tp + 1}-2017`;
+        let hd_url = `${base_gecko_value_url}coins/${current_crypto.id}/history?date=01-${tp + 1}-2017`;
         get_api_data(hd_url, 'HISTORICAL_DATA', tp);
     }
     
@@ -34,7 +56,7 @@ function generate_data () {
 
 function get_api_data(requested_url, data_to_generate, iteration) 
 {
-API_DATA = fetch(requested_url)
+fetch(requested_url)
     .then( (response) => {
     // Log the requested url address
     console.log(`Data from: ${requested_url}`);
@@ -59,6 +81,65 @@ API_DATA = fetch(requested_url)
             console.log('Additional Info: ');
             console.log(additional_info);
 
+            let crypto_heading = document.createElement("h1");
+            crypto_heading.innerText = additional_info.name;
+
+            let add_info_text = document.createElement("p");
+            add_info_text.innerHTML = 
+            `
+                ${additional_info.description} <br>
+                <h3>Links</h3>
+                <a href="${additional_info.website}">${additional_info.website}</a> <br>
+                <a href="${additional_info.source_code}">${additional_info.source_code}</a>
+            `;
+
+            // Append elements to additional info container
+            additional_info_container.appendChild(crypto_heading);
+            additional_info_container.appendChild(add_info_text);
+
+            break;
+
+        case 'CURRENT_INFO':
+            let current_info = 
+            {
+                price: data[current_crypto.id].usd,
+                change: data[current_crypto.id].usd_24h_change,
+                updated: convertUnixTimestamp(data[current_crypto.id].last_updated_at)
+            }
+
+            console.log('Current Info: ');
+            console.log(current_info);
+
+            let crypto_symbol_heading = document.createElement("h1");
+            crypto_symbol_heading.innerText = current_crypto.id.toUpperCase();
+
+            let change_status;
+
+            // Set the class for the percent change based on whether it is positive or negative
+            if (current_info.change < 0)
+                change_status = 'negative_change';
+
+            else if (current_info.change > 0)
+                change_status = 'positive_change';
+
+            else
+                change_status = 'no_change';
+
+            let curr_info_text = document.createElement("p");
+            curr_info_text.innerHTML = 
+            `
+                <h3>Price</h3>
+                $${current_info.price.toLocaleString("en-US")} <br>
+                <h3>Percent Change</h3>
+                <div class="${change_status}">${current_info.change.toFixed(2)}%</div> <br>
+                <h3>Last Updated</h3>
+                ${current_info.updated} <br>
+            `;
+
+            // Append elements to current info container
+            current_info_container.appendChild(crypto_symbol_heading);
+            current_info_container.appendChild(curr_info_text);
+
             break;
 
         case 'HISTORICAL_DATA':
@@ -67,16 +148,23 @@ API_DATA = fetch(requested_url)
             // Set this data point to whatever the global data point has been updated to since the API call
             historical_data[iteration] = data_pt;
             
-            console.log(`Data Point ${iteration + 1}: `);
-            console.log(data_pt);
-            
             break;
     }
 
     return data;
     });
-    
-    return API_DATA;
+
+    function convertUnixTimestamp (unix_timestamp)
+    {
+        // Get the date of this timestamp
+        let ts_date = new Date (unix_timestamp * 1000); // 1000 is here to convert to milliseconds
+
+        let month   =   ts_date.toLocaleString("en-US", {month: "numeric"});
+        let day     =   ts_date.toLocaleString("en-US", {day: "numeric"});
+        let year    =   ts_date.toLocaleString("en-US", {year: "numeric"});
+
+        return `${month}/${day}/${year}`;
+    }
 }
 
 generate_data();
