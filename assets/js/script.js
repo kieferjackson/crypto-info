@@ -169,6 +169,8 @@ fetch(requested_url)
 
 generate_data();
 
+// for Modal pop-up
+
 var btn = document.querySelector('#showModal');
 var modalDlg = document.querySelector('#image-modal');
 var imageModalCloseBtn = document.querySelector('#image-modal-close');
@@ -209,9 +211,13 @@ imgModalSave.addEventListener('click', function () {
 })
 
 function setCryptoListing() {
-    var cryptoLists = localStorage.getItem('cryptos').split(",");
+    let selected_cryptos = localStorage.getItem('cryptos');
+    if (selected_cryptos !== null)
+    {
+        var cryptoLists = localStorage.getItem('cryptos').split(",");
 
-    cryptoLists.forEach(addItemToView);
+        cryptoLists.forEach(addItemToView);
+    }
 }
 
 function addItemToView(element) {
