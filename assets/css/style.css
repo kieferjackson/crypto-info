@@ -36,3 +36,31 @@
     display: flex;
     width: 10%;
 }
+
+/* 24 hour Percent Changes */
+.negative_change, 
+.positive_change,
+.no_change
+{
+    font-weight: bold;
+    color: white;
+    
+    border-radius: 15px;
+    max-width: fit-content;
+    padding: 5px;
+}
+
+.negative_change
+{
+    background-color: tomato;
+}
+
+.positive_change
+{
+    background-color: lightgreen;
+}
+
+.no_change
+{
+    background-color: lightcyan
+}
