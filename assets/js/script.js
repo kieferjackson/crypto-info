@@ -57,11 +57,31 @@ function generate_data () {
 function get_api_data(requested_url, data_to_generate, iteration) 
 {
 fetch(requested_url)
-    .then( (response) => {
-    // Log the requested url address
-    console.log(`Data from: ${requested_url}`);
-    
-    return response.json();
+    .then( (response) => 
+    {
+        // Log the requested url address
+        console.log(`Data from: ${requested_url}`);
+        console.log(response.status);
+
+        // Check response status
+        if (response.status >= 200 && response.status < 300)
+            return response.json();
+
+        else
+        {
+            const generic_no_api_msg = `<div class="failed_request">Sorry, but no data could be retrieved.</div>`;
+            debugger;
+            // Display a generic error message to the user for the appropriate section depending on what is being fetched
+            switch (data_to_generate)
+            {
+                case 'ADDITIONAL_INFO': additional_info_container.innerHTML  = generic_no_api_msg;   break;
+                case 'CURRENT_INFO':    current_info_container.innerHTML     = generic_no_api_msg;   break;
+                case 'HISTORICAL_DATA': history_info_container.innerHTML     = generic_no_api_msg;   break;
+            }
+
+            throw Error(response.statusText);
+        }
+        
     })
     .then( (data) => {
     console.log(data);
@@ -152,6 +172,12 @@ fetch(requested_url)
     }
 
     return data;
+
+    })
+    .catch( (error) => 
+    {
+        // Log the error to the console
+        console.log(error);
     });
 
     function convertUnixTimestamp (unix_timestamp)
