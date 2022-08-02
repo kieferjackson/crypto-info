@@ -1,33 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crypto-Info</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
+</head>
 
-  <body>
+<body>
+    <section class="secContainer">
+        <div class="divListCrypto" id="divListCrypto">
+            <div class="listTop">
+                Crypto Currencies
+            </div>
+        </div>
+        <div class="container" id="app">
+            <div id="image-modal" class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">Crypto Currencies</p>
+                            <button id="image-modal-close" class="delete" aria-label="close"></button>
+                        </header>
+                        <section class="modal-card-body">
+                            <form id="project-form">
+                                <div class="form-group">
+                                    <select class="form-control" id="project-type-input">
+                                        <option id="1" value="BitCoin">Bit Coin</option>
+                                        <option id="2" value="Ethereum">Ethereum</option>
+                                        <option id="3" value="Lite coin">Lite coin</option>
+                                        <option id="4" value="Tether">Tether</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </section>
+                        <footer class="modal-card-foot">
+                            <button id="save" class="button is-success">Add</button>
+                            <button id="cancel" class="button">Cancel</button>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="button is-primary modal-button modal-custom" id="showModal"> Add </button>
+        </div>
+    </section>
+
     <!-- Title -->
     <div class="websiteTitle">
-      <h1>Crypto-Info</h1>
+        <h1>Crypto-Info</h1>
     </div>
 
     <!-- Options? link -->
     <div class="options">
-      <h2>Options</h2>
+        <h2>Options</h2>
     </div>
 
     <!-- Crypto -->
     <div class="cryptoCurrenciesOptions">
-      <h2>Crypto Currenices</h2>
+        <h2>Crypto Currenices</h2>
     </div>
 
     <!-- Additional Information -->
     <div class="additionalInformation">
-      <h2>Additonal Information</h2>
+        <h2>Additonal Information</h2>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-  </body>
+</body>
+
 </html>
