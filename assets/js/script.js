@@ -51,7 +51,7 @@ function generate_data () {
     
     console.log(historical_data);
     
-    // get_api_data(coin_gecko_versus_url);
+    get_api_data(base_gecko_value_url + 'coins/list');
 }
 
 function get_api_data(requested_url, data_to_generate, iteration) 
