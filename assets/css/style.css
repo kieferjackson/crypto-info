@@ -75,17 +75,8 @@
     padding: 5px;
 }
 
-.negative_change
-{
-    background-color: tomato;
-}
+.negative_change { background-color: rgb(241, 76, 47); }
 
-.positive_change
-{
-    background-color: lightgreen;
-}
+.positive_change { background-color: rgb(62, 236, 62); }
 
-.no_change
-{
-    background-color: lightcyan
-}
+.no_change { background-color: rgb(199, 199, 199) }

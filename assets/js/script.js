@@ -123,17 +123,31 @@ fetch(requested_url)
             let crypto_symbol_heading = document.createElement("h1");
             crypto_symbol_heading.innerText = current_crypto.id.toUpperCase();
 
-            let change_status;
-
+            let change_status, change_sign;
+            current_info.change = 0;
             // Set the class for the percent change based on whether it is positive or negative
             if (current_info.change < 0)
+            {
                 change_status = 'negative_change';
+                // It does not need a sign because it is a negative number and already has a '-' symbol
+                change_sign = ''; 
+            }
+                
 
             else if (current_info.change > 0)
+            {
                 change_status = 'positive_change';
-
+                // Indicate that the percent change is positive
+                change_sign = '+'; 
+            }
+                
             else
+            {
                 change_status = 'no_change';
+                // Even though there is no percent change, use the '+' symbol
+                change_sign = '+'; 
+            }
+                
 
             let curr_info_text = document.createElement("p");
             curr_info_text.innerHTML = 
@@ -141,7 +155,7 @@ fetch(requested_url)
                 <h3>Price</h3>
                 $${current_info.price.toLocaleString("en-US")} <br>
                 <h3>Percent Change</h3>
-                <div class="${change_status}">${current_info.change.toFixed(2)}%</div> <br>
+                <div class="${change_status}">${change_sign}${current_info.change.toFixed(2)}%</div> <br>
                 <h3>Last Updated</h3>
                 ${current_info.updated} <br>
             `;
