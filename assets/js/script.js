@@ -121,7 +121,7 @@ fetch(requested_url)
             console.log(current_info);
 
             let crypto_symbol_heading = document.createElement("h1");
-            crypto_symbol_heading.innerText = current_crypto.id.toUpperCase();
+            crypto_symbol_heading.innerText = `${current_crypto.id.toUpperCase()}`;
 
             let change_status, change_sign;
             
@@ -155,7 +155,7 @@ fetch(requested_url)
                 <h3>Price</h3>
                 $${current_info.price.toLocaleString("en-US")} <br>
                 <h3>Percent Change</h3>
-                <div class="${change_status}">${change_sign}${current_info.change.toFixed(2)}%</div> <br>
+                <div class="${change_status}">${change_sign}${current_info.change.toFixed(2)}%</div>
                 <h3>Last Updated</h3>
                 ${current_info.updated} <br>
             `;
