@@ -124,7 +124,7 @@ fetch(requested_url)
             crypto_symbol_heading.innerText = current_crypto.id.toUpperCase();
 
             let change_status, change_sign;
-            current_info.change = 0;
+            
             // Set the class for the percent change based on whether it is positive or negative
             if (current_info.change < 0)
             {
