@@ -6,7 +6,9 @@
 
 
 /* Positioning */
-
+*{
+    font-family: 'Quicksand', sans-serif;
+}
 
 /* Row and Column section */
 
