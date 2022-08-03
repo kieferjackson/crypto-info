@@ -36,7 +36,6 @@
 .secContainer{
     box-sizing: border-box;
     border: solid green;
-    width: 20%;
     padding-bottom: 10%;    
     background-color: rgba(205, 247, 177, 0.795);
 }
@@ -57,10 +56,10 @@
     background-color: rgba(31, 194, 17, 0.767);
 }
 
-.modal-custom{    
-    margin-left: 6%;
+.modal-custom {
+    margin: auto;
     display: flex;
-    width: 10%;
+    width: 50%;
 }
 
 
