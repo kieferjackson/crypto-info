@@ -6,20 +6,10 @@ let current_crypto =
     id:  'bitcoin'      // Short Crypto ID
 };
 
-// NOTE: The following code within the '***'s should be removed once static HTML is implemented. It is only for testing data display
-/*******************************************************************/
-const current_info_container = document.createElement("section");
-current_info_container.className = 'current_info_container';
-document.body.appendChild(current_info_container);
-
-const history_info_container = document.createElement("section");
-history_info_container.className = 'history_info_container';
-document.body.appendChild(history_info_container);
-
-const additional_info_container = document.createElement("section");
-additional_info_container.className = 'additional_info_container';
-document.body.appendChild(additional_info_container);
-/*******************************************************************/
+// Select data info containers
+const current_info_container = document.querySelector('#dailyHourInfo');
+const history_info_container = document.querySelector('#historicalData');
+const additional_info_container = document.querySelector('#additionalInformation');
 
 function generate_data () {
     const base_paprika_url = 'https://api.coinpaprika.com/v1/coins/'; // e.g. eth-ethereum, btc-bitcoin
