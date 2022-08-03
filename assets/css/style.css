@@ -63,6 +63,19 @@
 }
 
 
+/* ---24 hour Info Styling--- */
+#dailyHourInfo h1
+{
+    font-weight: bold;
+    margin-top: 1vh;
+}
+
+#dailyHourInfo p h3
+{
+    margin-top: 0.5vh;
+    color:rgb(133, 133, 133);
+}
+
 /* 24 hour Percent Changes */
 .negative_change, 
 .positive_change,
@@ -76,17 +89,8 @@
     padding: 5px;
 }
 
-.negative_change
-{
-    background-color: tomato;
-}
+.negative_change { background-color: rgb(241, 76, 47); }
 
-.positive_change
-{
-    background-color: lightgreen;
-}
+.positive_change { background-color: rgb(62, 236, 62); }
 
-.no_change
-{
-    background-color: lightcyan
-}
+.no_change { background-color: rgb(199, 199, 199) }
