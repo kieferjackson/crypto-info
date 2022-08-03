@@ -22,7 +22,7 @@
       <header>
         <div class="columns">
           <!-- Title -->
-          <div class="column" style="background: grey" class="websiteTitle">
+          <div class="column" style="background: rgb(161, 158, 158)" class="websiteTitle">
             <img
               src="./assets/images/ci_logo_v1.png"
               alt="Crypto Info Logo"
@@ -39,7 +39,52 @@
           id="cryptoCurrencyOptions"
           style="background: lightblue"
         >
-          <h4>Crypto Currency</h4>
+          
+          <div class="secContainer">
+            <div class="divListCrypto" id="divListCrypto">
+              <div class="listTop">Crypto Currencies</div>
+            </div>
+            <div id="app">
+              <div id="image-modal" class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                  <div class="modal-card">
+                    <header class="modal-card-head">
+                      <p class="modal-card-title">Crypto Currencies</p>
+                      <button
+                        id="image-modal-close"
+                        class="delete"
+                        aria-label="close"
+                      ></button>
+                    </header>
+                    <section class="modal-card-body">
+                      <form id="project-form">
+                        <div class="form-group">
+                          <select class="form-control" id="project-type-input">
+                              <option data-code: "btc" data-name: "bitcoin"  id="1" value="BitCoin">BitCoin</option>
+                              <option data-code: "eth" data-name: "ethereum" id="2" value="Ethereum">Ethereum</option>
+                              <option data-code: "ltc"data-name: "litecoin" id="3" value="Lite coin">Litecoin</option>
+                              <option data-code: "usdt" data-name: "tether"  id="4" value="Tether">Tether</option>    
+                          </select>
+                        </div>
+                      </form>
+                    </section>
+                    <footer class="modal-card-foot">
+                      <button id="save" class="button is-success">Add</button>
+                      <button id="cancel" class="button">Cancel</button>
+                    </footer>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <button
+                class="button is-primary modal-button modal-custom"
+                id="showModal"
+              >
+                Add
+              </button>
+            </div>
+          </div>
         </div>
         <div class=" column is-10">
           <div class="columns">
@@ -70,51 +115,7 @@
         </div>
       </div>
 
-      <div class="secContainer">
-        <div class="divListCrypto" id="divListCrypto">
-          <div class="listTop">Crypto Currencies</div>
-        </div>
-        <div class="container" id="app">
-          <div id="image-modal" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-              <div class="modal-card">
-                <header class="modal-card-head">
-                  <p class="modal-card-title">Crypto Currencies</p>
-                  <button
-                    id="image-modal-close"
-                    class="delete"
-                    aria-label="close"
-                  ></button>
-                </header>
-                <section class="modal-card-body">
-                  <form id="project-form">
-                    <div class="form-group">
-                      <select class="form-control" id="project-type-input">
-                          <option data-code: "btc" data-name: "bitcoin"  id="1" value="BitCoin">BitCoin</option>
-                          <option data-code: "eth" data-name: "ethereum" id="2" value="Ethereum">Ethereum</option>
-                          <option data-code: "ltc"data-name: "litecoin" id="3" value="Lite coin">Litecoin</option>
-                          <option data-code: "usdt" data-name: "tether"  id="4" value="Tether">Tether</option>    
-                      </select>
-                    </div>
-                  </form>
-                </section>
-                <footer class="modal-card-foot">
-                  <button id="save" class="button is-success">Add</button>
-                  <button id="cancel" class="button">Cancel</button>
-                </footer>
-              </div>
-            </div>
-          </div>
-          <br />
-          <button
-            class="button is-primary modal-button modal-custom"
-            id="showModal"
-          >
-            Add
-          </button>
-        </div>
-      </div>
+      
 
     </div>
 
