@@ -52,14 +52,13 @@
     border-style: solid;
     margin-bottom: 5%;
     text-align: center;
-    background-color: rgba(31, 194, 17, 0.767);
+    background-color: liner rgba(31, 194, 17, 0.767);
 }
 
 .modal-custom{    
     margin-left: 6%;
     display: flex;
     width: 10%;
-    /* color: #9393e6; */
 }
 
 /* 24 hour Percent Changes */
