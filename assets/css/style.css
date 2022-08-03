@@ -34,7 +34,6 @@
 .secContainer{
     box-sizing: border-box;
     border: solid green;
-    width: 20%;
     padding-bottom: 10%;    
     background-color: rgba(205, 247, 177, 0.795);
 }
@@ -55,10 +54,24 @@
     background-color: liner rgba(31, 194, 17, 0.767);
 }
 
-.modal-custom{    
-    margin-left: 6%;
+.modal-custom {
+    margin: auto;
     display: flex;
-    width: 10%;
+    width: 50%;
+}
+
+
+/* ---24 hour Info Styling--- */
+#dailyHourInfo h1
+{
+    font-weight: bold;
+    margin-top: 1vh;
+}
+
+#dailyHourInfo p h3
+{
+    margin-top: 0.5vh;
+    color:rgb(133, 133, 133);
 }
 
 /* 24 hour Percent Changes */
@@ -74,17 +87,8 @@
     padding: 5px;
 }
 
-.negative_change
-{
-    background-color: tomato;
-}
+.negative_change { background-color: rgb(241, 76, 47); }
 
-.positive_change
-{
-    background-color: lightgreen;
-}
+.positive_change { background-color: rgb(62, 236, 62); }
 
-.no_change
-{
-    background-color: lightcyan
-}
+.no_change { background-color: rgb(199, 199, 199) }

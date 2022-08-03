@@ -6,20 +6,10 @@ let current_crypto =
     id:  'bitcoin'      // Short Crypto ID
 };
 
-// NOTE: The following code within the '***'s should be removed once static HTML is implemented. It is only for testing data display
-/*******************************************************************/
-const current_info_container = document.createElement("section");
-current_info_container.className = 'current_info_container';
-document.body.appendChild(current_info_container);
-
-const history_info_container = document.createElement("section");
-history_info_container.className = 'history_info_container';
-document.body.appendChild(history_info_container);
-
-const additional_info_container = document.createElement("section");
-additional_info_container.className = 'additional_info_container';
-document.body.appendChild(additional_info_container);
-/*******************************************************************/
+// Select data info containers
+const current_info_container = document.querySelector('#dailyHourInfo');
+const history_info_container = document.querySelector('#historicalData');
+const additional_info_container = document.querySelector('#additionalInformation');
 
 function generate_data () {
     const base_paprika_url = 'https://api.coinpaprika.com/v1/coins/'; // e.g. eth-ethereum, btc-bitcoin
@@ -131,19 +121,33 @@ fetch(requested_url)
             console.log(current_info);
 
             let crypto_symbol_heading = document.createElement("h1");
-            crypto_symbol_heading.innerText = current_crypto.id.toUpperCase();
+            crypto_symbol_heading.innerText = `${current_crypto.id.toUpperCase()}`;
 
-            let change_status;
-
+            let change_status, change_sign;
+            
             // Set the class for the percent change based on whether it is positive or negative
             if (current_info.change < 0)
+            {
                 change_status = 'negative_change';
+                // It does not need a sign because it is a negative number and already has a '-' symbol
+                change_sign = ''; 
+            }
+                
 
             else if (current_info.change > 0)
+            {
                 change_status = 'positive_change';
-
+                // Indicate that the percent change is positive
+                change_sign = '+'; 
+            }
+                
             else
+            {
                 change_status = 'no_change';
+                // Even though there is no percent change, use the '+' symbol
+                change_sign = '+'; 
+            }
+                
 
             let curr_info_text = document.createElement("p");
             curr_info_text.innerHTML = 
@@ -151,7 +155,7 @@ fetch(requested_url)
                 <h3>Price</h3>
                 $${current_info.price.toLocaleString("en-US")} <br>
                 <h3>Percent Change</h3>
-                <div class="${change_status}">${current_info.change.toFixed(2)}%</div> <br>
+                <div class="${change_status}">${change_sign}${current_info.change.toFixed(2)}%</div>
                 <h3>Last Updated</h3>
                 ${current_info.updated} <br>
             `;
