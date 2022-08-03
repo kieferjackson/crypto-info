@@ -6,6 +6,9 @@
 
 
 /* Positioning */
+*{
+    font-family: 'Quicksand', sans-serif;
+}
 
 
 /* Row and Column section */
@@ -51,7 +54,7 @@
     border-style: solid;
     margin-bottom: 5%;
     text-align: center;
-    background-color: liner rgba(31, 194, 17, 0.767);
+    background-color: rgba(31, 194, 17, 0.767);
 }
 
 .modal-custom {
