@@ -2,9 +2,28 @@ var historical_data = [];
 
 let current_crypto = 
 {
-    fid: 'btc-bitcoin', // Full Crypto ID
-    id:  'bitcoin'      // Short Crypto ID
+    code:   '',     // Crypto Code      (e.g. btc)
+    id:     '',     // Short Crypto ID  (e.g. bitcoin)
+    fid:    '',     // Full Crypto ID   (e.g. btc-bitcoin)
 };
+
+// Listening for a click for any element of the 'listView' class to get the selected cryptocurrency
+document.addEventListener( 'click', (event) =>
+{
+    // Check that the click was for a crypto selection button
+    if (event.target.className === 'listView')
+    {
+        let sel_crypto_el = event.target;
+
+        // Update the current crypto object with the selected crypto's attributes
+        current_crypto.code = sel_crypto_el.dataset.code;
+        current_crypto.id = sel_crypto_el.dataset.name;
+        current_crypto.fid = `${sel_crypto_el.dataset.code}-${sel_crypto_el.dataset.name}`;
+        
+        console.log(current_crypto);
+    }
+})
+let crypto_sel_buttons = document.querySelectorAll('.listView');
 
 // Select data info containers
 const current_info_container = document.querySelector('#dailyHourInfo');
