@@ -59,8 +59,8 @@
     margin-left: 6%;
     display: flex;
     width: 10%;
+    /* color: #9393e6; */
 }
-
 
 /* 24 hour Percent Changes */
 .negative_change, 
