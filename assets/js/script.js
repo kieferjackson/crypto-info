@@ -51,7 +51,7 @@ function generate_data () {
     
     console.log(historical_data);
     
-    // get_api_data(coin_gecko_versus_url);
+    get_api_data(base_gecko_value_url + 'coins/list');
 }
 
 function get_api_data(requested_url, data_to_generate, iteration) 
@@ -70,7 +70,7 @@ fetch(requested_url)
         else
         {
             const generic_no_api_msg = `<div class="failed_request">Sorry, but no data could be retrieved.</div>`;
-            debugger;
+            
             // Display a generic error message to the user for the appropriate section depending on what is being fetched
             switch (data_to_generate)
             {
