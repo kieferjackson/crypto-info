@@ -228,6 +228,21 @@ var imgModalSave = document.getElementById('save');
 var currTypeInputEl = $('#project-type-input');
 var cryptoListingView = document.getElementById('divListCrypto');
 
+// Dictionary object for associating a crypto's value with its code and name
+crypto_options = {};
+
+let crypto_select_menu = currTypeInputEl[0];
+
+// For each cryptocurrency option, set their key value and their properties by value and data attributes respectively
+for (var i = 0 ; i < crypto_select_menu.length ; i++)
+{
+    let crypto_desc = crypto_select_menu[i].value;
+    let crypto_code = crypto_select_menu[i].dataset.code;
+    let crypto_name = crypto_select_menu[i].dataset.name;
+    
+    crypto_options[crypto_desc] = { 'code': crypto_code , 'name': crypto_name };
+}
+
 // This function is to 'Add' button for modal pop-up
 
 btn.addEventListener('click', function () {
