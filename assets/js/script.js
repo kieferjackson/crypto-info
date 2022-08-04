@@ -102,12 +102,21 @@ fetch(requested_url)
     switch (data_to_generate) 
     {
         case 'ADDITIONAL_INFO':
+            let source_code_link;
+
+            // Check whether or not this cryptocurrency is open source (includes link to source code)
+            if (data.open_source)
+                source_code_link = data.links.source_code[0];
+
+            else
+                source_code_link = '';
+
             let additional_info = 
             {
                 name: data.name,
                 description: data.description,
                 website: data.links.website[0],
-                source_code: data.links.source_code[0]
+                source_code: source_code_link
             }
 
             console.log('Additional Info: ');
