@@ -21,6 +21,9 @@ document.addEventListener( 'click', (event) =>
         current_crypto.fid = `${sel_crypto_el.dataset.code}-${sel_crypto_el.dataset.name}`;
         
         console.log(current_crypto);
+
+        // Fetch crypto data, and generate data for this currency
+        generate_data();
     }
 })
 let crypto_sel_buttons = document.querySelectorAll('.listView');
@@ -110,6 +113,9 @@ fetch(requested_url)
             console.log('Additional Info: ');
             console.log(additional_info);
 
+            // Clear any data that may have been displayed previously to additional info
+            clearContainer(additional_info_container);
+
             let crypto_heading = document.createElement("h1");
             crypto_heading.innerText = additional_info.name;
 
@@ -138,6 +144,9 @@ fetch(requested_url)
 
             console.log('Current Info: ');
             console.log(current_info);
+
+            // Clear any data that may have been displayed previously to current info
+            clearContainer(current_info_container);
 
             let crypto_symbol_heading = document.createElement("h1");
             crypto_symbol_heading.innerText = `${current_crypto.id.toUpperCase()}`;
@@ -214,9 +223,22 @@ fetch(requested_url)
 
         return `${month}/${day}/${year}`;
     }
-}
 
-generate_data();
+    function clearContainer (container_el)
+    {
+        // Check that this container has children, and remove them if so
+        if (container_el.childElementCount > 0)
+        {
+            var el_to_remove = container_el.lastElementChild;
+
+            while (el_to_remove)
+            {
+                container_el.removeChild(el_to_remove);
+                el_to_remove = container_el.lastElementChild;
+            }
+        }
+    }
+}
 
 // for Modal pop-up
 
@@ -300,6 +322,11 @@ function addItemToView(element) {
         console.log(element);
         var entry = document.createElement('div');
         entry.classList.add("listView");
+
+        // Add data attributes for this crypto's entry code and name by using element as the key
+        entry.dataset.code = crypto_options[element].code;
+        entry.dataset.name = crypto_options[element].name;
+
         entry.append(element);
         cryptoListingView.appendChild(entry);
         cryptoListingView.appendChild(document.createElement('br'));
