@@ -208,19 +208,26 @@ var imgModalCancel = document.getElementById('cancel');
 var imgModalSave = document.getElementById('save');
 var currTypeInputEl = $('#project-type-input');
 var cryptoListingView = document.getElementById('divListCrypto');
-// var olListingView = document.getElementById('olListCrypto');
+
+// This function is to 'Add' button for modal pop-up
 
 btn.addEventListener('click', function () {
     modalDlg.classList.add('is-active');
 });
 
+//  This is for modal window 'close' button
+
 imageModalCloseBtn.addEventListener('click', function () {
     modalDlg.classList.remove('is-active');
 });
 
+//  This is for modal window 'close' button
+
 imgModalCancel.addEventListener('click', function () {
     modalDlg.classList.remove('is-active');
 })
+
+// This function is to save data in local storage
 
 imgModalSave.addEventListener('click', function () {
     var currType = currTypeInputEl.val();
@@ -240,6 +247,8 @@ imgModalSave.addEventListener('click', function () {
     }
 })
 
+// This function is to retrieve data from local storage
+
 function setCryptoListing() {
     let selected_cryptos = localStorage.getItem('cryptos');
     if (selected_cryptos !== null)
@@ -249,6 +258,8 @@ function setCryptoListing() {
         cryptoLists.forEach(addItemToView);
     }
 }
+
+// This function is to view listing the coins
 
 function addItemToView(element) {
     if (element != "") {
