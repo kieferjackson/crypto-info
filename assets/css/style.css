@@ -4,24 +4,31 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-
-
-.cryptoDisplay{
+.cryptoDisplay
+{
     width: 100%;
     max-width: 100%;
 }
 
-.mainContent{ min-height:100vh }
+#cryptoCurrencyOptions 
+{ 
+    min-height:100vh;
+    padding: unset;
+}
+
+@media screen and (max-width: 768px) { #cryptoCurrencyOptions { min-height: unset } }
 
 /* ---Crypto Selection Menu Styling--- */
-.secContainer{
+.secContainer
+{
     box-sizing: border-box;
     border: solid green; 
     padding-bottom: 10%;    
     background-color: rgba(205, 247, 177, 0.795);
 }
 
-.listView{
+.listView
+{
     border-style: solid; 
      /* margin-left: 20%; */
     /* margin-right: 20%;  */
@@ -29,7 +36,8 @@
     background-color: rgba(144, 247, 166, 0.856);
 }
 
-.listTop{    
+.listTop
+{    
     /* border-style: solid; */
     margin-bottom: 5%;
     text-align: center;
@@ -37,16 +45,12 @@
 }
 
 /* Modal Menu Styling */
-.modal-card{
-    width: 50%;
-    
-}
+.modal-card { width: 50%; }
 
-.form-control{
-    width: 70%;    
-}
+.form-control { width: 70%; }
 
-.modal-custom {
+.modal-custom 
+{
     margin: auto;
     display: flex;
     width: 50%;

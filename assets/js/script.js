@@ -29,9 +29,9 @@ document.addEventListener( 'click', (event) =>
 let crypto_sel_buttons = document.querySelectorAll('.listView');
 
 // Select data info containers
-const current_info_container = document.querySelector('#dailyHourInfo');
-const history_info_container = document.querySelector('#historicalData');
-const additional_info_container = document.querySelector('#additionalInformation');
+const current_info_container = document.querySelector('#current_info_container');
+const history_info_container = document.querySelector('#history_info_container');
+const additional_info_container = document.querySelector('#additional_info_container');
 
 function generate_data () {
     const base_paprika_url = 'https://api.coinpaprika.com/v1/coins/'; // e.g. eth-ethereum, btc-bitcoin
@@ -369,5 +369,3 @@ function addItemToView(element) {
 }
 
 setCryptoListing();
-
-// This is a comment
