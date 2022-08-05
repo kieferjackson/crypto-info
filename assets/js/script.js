@@ -126,7 +126,7 @@ fetch(requested_url)
             clearContainer(additional_info_container);
 
             let crypto_heading = document.createElement("h1");
-            crypto_heading.innerText = additional_info.name;
+            crypto_heading.innerText = `${additional_info.name} (${current_crypto.code.toUpperCase()}):`;
 
             let add_info_text = document.createElement("p");
             add_info_text.innerHTML = 
@@ -158,7 +158,7 @@ fetch(requested_url)
             clearContainer(current_info_container);
 
             let crypto_symbol_heading = document.createElement("h1");
-            crypto_symbol_heading.innerText = `${current_crypto.id.toUpperCase()}`;
+            crypto_symbol_heading.innerText = `${capitalize(current_crypto.id)} (${current_crypto.code.toUpperCase()})`;
 
             let change_status, change_sign;
             
@@ -169,9 +169,8 @@ fetch(requested_url)
                 // It does not need a sign because it is a negative number and already has a '-' symbol
                 change_sign = ''; 
             }
-                
-
-            else if (current_info.change > 0)
+            
+            else if (current_info.change >= 0.01)
             {
                 change_status = 'positive_change';
                 // Indicate that the percent change is positive
@@ -231,6 +230,18 @@ fetch(requested_url)
         let year    =   ts_date.toLocaleString("en-US", {year: "numeric"});
 
         return `${month}/${day}/${year}`;
+    }
+
+    // Converts only the first character in a string to upper-case
+    function capitalize (string_value) {
+        if (string_value.length > 1) {
+            return string_value.charAt(0).toUpperCase() + string_value.slice(1);
+        } else if (string_value.length === 1) {
+            return string_value.charAt(0).toUpperCase();
+        } else {
+            console.log(`Your input value of (${string_value}) is not a string datatype. Its return value will be converted to a string.`);
+            return String(string_value);
+        }
     }
 
     function clearContainer (container_el)
