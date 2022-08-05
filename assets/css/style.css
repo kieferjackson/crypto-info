@@ -1,29 +1,33 @@
 
-
-/* background color */
-
-
-
-
-/* Positioning */
-*{
+*
+{
     font-family: 'Quicksand', sans-serif;
 }
 
-/* Row and Column section */
+/* ---Crypto Selection Menu Styling--- */
+.secContainer{
+    box-sizing: border-box;
+    border: solid green; 
+    padding-bottom: 10%;    
+    background-color: rgba(205, 247, 177, 0.795);
+}
 
+.listView{
+    border-style: solid; 
+     /* margin-left: 20%; */
+    /* margin-right: 20%;  */
+    text-align: center;
+    background-color: rgba(144, 247, 166, 0.856);
+}
 
+.listTop{    
+    /* border-style: solid; */
+    margin-bottom: 5%;
+    text-align: center;
+    background-color: rgba(31, 194, 17, 0.767);
+}
 
-/* website title */
-
-/* options? link */
-
-
-/* crypto options */
-
-/* additional information */
-
-
+/* Modal Menu Styling */
 .modal-card{
     width: 50%;
     
@@ -33,37 +37,26 @@
     width: 70%;    
 }
 
-.secContainer{
-    box-sizing: border-box;
-    border: solid green;
-    padding-bottom: 10%;    
-    background-color: rgba(205, 247, 177, 0.795);
-}
-
-.listView{
-    border-style: solid;    
-    margin-left: 20%;
-    margin-right: 20%; 
-    text-align: center;
-    margin-bottom: -5%;
-    background-color: rgba(144, 247, 166, 0.856);
-}
-
-.listTop{    
-    border-style: solid;
-    margin-bottom: 5%;
-    text-align: center;
-    background-color: rgba(31, 194, 17, 0.767);
-}
-
 .modal-custom {
     margin: auto;
     display: flex;
     width: 50%;
 }
 
+/* ---24 hour Info Styling--- */
+#dailyHourInfo h1
+{
+    font-weight: bold;
+    margin-top: 1vh;
+}
 
-/* 24 hour Percent Changes */
+#dailyHourInfo p h3
+{
+    margin-top: 0.5vh;
+    color:rgb(133, 133, 133);
+}
+
+/* 24 hour Percent Changes - Changes the color of percent change to indicate whether it is positive, negative, or neutral */
 .negative_change, 
 .positive_change,
 .no_change
@@ -76,17 +69,14 @@
     padding: 5px;
 }
 
-.negative_change
-{
-    background-color: tomato;
-}
+.negative_change { background-color: rgb(241, 76, 47); }
 
-.positive_change
-{
-    background-color: lightgreen;
-}
+.positive_change { background-color: rgb(62, 236, 62); }
 
-.no_change
-{
-    background-color: lightcyan
-}
+.no_change { background-color: rgb(199, 199, 199) }
+
+/* historical data buttons */
+.data {
+    margin-top: 175px;
+    margin-right: 20px;
+    }

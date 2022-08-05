@@ -60,11 +60,11 @@
                     <section class="modal-card-body">
                       <form id="project-form">
                         <div class="form-group">
-                          <select class="form-control" id="project-type-input">
-                              <option data-code: "btc" data-name: "bitcoin"  id="1" value="BitCoin">BitCoin</option>
-                              <option data-code: "eth" data-name: "ethereum" id="2" value="Ethereum">Ethereum</option>
-                              <option data-code: "ltc" data-name: "litecoin" id="3" value="Lite coin">Litecoin</option>
-                              <option data-code: "usdt" data-name: "tether"  id="4" value="Tether">Tether</option>    
+                          <select class="form-control" id="project-type-input">  
+                              <option data-code="btc"   data-name="bitcoin"     id="1" value="BitCoin">Bitcoin</option>
+                              <option data-code="eth"   data-name="ethereum"    id="2" value="Ethereum">Ethereum</option>
+                              <option data-code="ltc"   data-name="litecoin"    id="3" value="Lite coin">Litecoin</option>
+                              <option data-code="usdt"  data-name="tether"      id="4" value="Tether">Tether</option>    
                           </select>
                         </div>
                       </form>
@@ -106,7 +106,18 @@
               style="background: lightblue"
               
             >
+
               <h4 style="text-align: center">Historical Data</h4>
+              
+              <div>
+                <!-- Buttons for Historical Data  -->
+
+              <button id="alltime" class="button is-link is-focused data">All time</button>
+              <button id="year" class="button is-link is-focused data">Year</button>
+              <button id="month" class="button is-link is-focused data">Month</button>
+              <button id="week" class="button is-link is-focused data">Week</button>
+            </div>
+
             </div>
           </div>
           <div class="columns">
@@ -119,7 +130,6 @@
       </div>
 
       
-
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
