@@ -1,7 +1,20 @@
 
-*
+:root
 {
-    font-family: 'Quicksand', sans-serif;
+    --subtle-depth: inset 0px 1px 5px 0px rgb(128, 128, 128);
+    --standard-box-shadow: 0px 4px 8px 0px #85858567;
+    --light-background: linear-gradient(0deg, #f1f1f1 0%, #fff);
+}
+
+* { font-family: 'Quicksand', sans-serif }
+
+body { background: radial-gradient(at bottom right, #9ecfc0ff 0%, #92bbbaff 100%) }
+
+header
+{
+    padding: 20px;
+    background: var(--light-background);
+    box-shadow: var(--subtle-depth);
 }
 
 .cryptoDisplay
@@ -9,14 +22,6 @@
     width: 100%;
     max-width: 100%;
 }
-
-#cryptoCurrencyOptions 
-{ 
-    min-height:100vh;
-    padding: unset;
-}
-
-@media screen and (max-width: 768px) { #cryptoCurrencyOptions { min-height: unset } }
 
 /* ---Crypto Selection Menu Styling--- */
 .secContainer
@@ -26,6 +31,17 @@
     padding-bottom: 10%;    
     background-color: rgba(205, 247, 177, 0.795);
 }
+
+#cryptoCurrencyOptions 
+{ 
+    background-color: #fff;
+    min-height:100vh;
+    padding: unset;
+    box-shadow: var(--subtle-depth);
+}
+
+/* Mobile Exception for the Section's Height */
+@media screen and (max-width: 768px) { #cryptoCurrencyOptions { min-height: unset } }
 
 .listView
 {
@@ -69,6 +85,25 @@
     color:rgb(133, 133, 133);
 }
 
+/* ---Data Display Containers--- - Current (24 Hour), Historical, and Additional Information */
+#dailyHourInfo,
+#historicalData,
+#additionalInformation
+{
+    text-align: center;
+}
+
+#current_info_container,
+#history_info_container,
+#additional_info_container
+{
+    text-align: left;
+    box-shadow: var(--subtle-depth);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+}
+
 /* 24 hour Percent Changes - Changes the color of percent change to indicate whether it is positive, negative, or neutral */
 .negative_change, 
 .positive_change,
@@ -82,14 +117,15 @@
     padding: 5px;
 }
 
-.negative_change { background-color: rgb(241, 76, 47); }
+.negative_change { background-color: rgb(241, 76, 47) }
 
-.positive_change { background-color: rgb(62, 236, 62); }
+.positive_change { background-color: rgb(62, 236, 62) }
 
 .no_change { background-color: rgb(199, 199, 199) }
 
-/* historical data buttons */
-.data {
+/* Historical Data Timespan Buttons */
+.data 
+{
     margin-top: 175px;
     margin-right: 20px;
-    }
+}
