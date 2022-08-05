@@ -208,6 +208,10 @@ var imgModalCancel = document.getElementById('cancel');
 var imgModalSave = document.getElementById('save');
 var currTypeInputEl = $('#project-type-input');
 var cryptoListingView = document.getElementById('divListCrypto');
+var alltime = document.getElementById('alltime');
+var year = document.getElementById('year');
+var month = document.getElementById('month');
+var week = document.getElementById('week');
 
 // This function is to 'Add' button for modal pop-up
 
@@ -226,6 +230,28 @@ imageModalCloseBtn.addEventListener('click', function () {
 imgModalCancel.addEventListener('click', function () {
     modalDlg.classList.remove('is-active');
 })
+
+
+//Add function to populate historical data over alltime
+alltime.addEventListener('click', function() {
+
+})
+
+//Add function to populate historical data over a year
+year.addEventListener('click', function() {
+
+})
+
+//Add function to populate historical data over a month
+month.addEventListener('click', function() {
+
+})
+
+//Add function to populate historical data over a week
+week.addEventListener('click', function() {
+
+})
+
 
 // This function is to save data in local storage
 
@@ -273,3 +299,4 @@ function addItemToView(element) {
 }
 
 setCryptoListing();
+

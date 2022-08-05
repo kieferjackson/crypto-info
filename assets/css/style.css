@@ -61,7 +61,12 @@
     display: flex;
     width: 50%;
 }
+/* historical data buttons */
+.data {
+margin-top: 175px;
+margin-right: 20px;
 
+}
 
 /* ---24 hour Info Styling--- */
 #dailyHourInfo h1
