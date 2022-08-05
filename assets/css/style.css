@@ -4,6 +4,15 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+
+
+.cryptoDisplay{
+    width: 100%;
+    max-width: 100%;
+}
+
+.mainContent{ min-height:100vh }
+
 /* ---Crypto Selection Menu Styling--- */
 .secContainer{
     box-sizing: border-box;
