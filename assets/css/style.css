@@ -78,5 +78,5 @@
 /* historical data buttons */
 .data {
     margin-top: 175px;
-    margin-right: 20px;
+    align-content: right;
     }
