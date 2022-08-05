@@ -10,25 +10,44 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Crypto Info Website Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicons/favicon-16x16.png">
-    <link rel="manifest" href="./assets/images/favicons/site.webmanifest">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/images/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/images/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/images/favicons/site.webmanifest" />
   </head>
 
-
-
   <body>
-    <div class="container cryptoDisplay">
+    <div class="container is-fullheight cryptoDisplay">
       <header>
         <div class="columns">
           <!-- Title -->
-          <div class="column" style="background: rgb(161, 158, 158)" class="websiteTitle">
+          <div
+            class="column"
+            style="background: rgb(161, 158, 158)"
+            class="websiteTitle"
+          >
             <img
               src="./assets/images/ci_logo_v1.png"
               alt="Crypto Info Logo"
@@ -41,11 +60,10 @@
       <div class="columns">
         <!-- Crypto Currency Options -->
         <div
-          class="column is-2"
+          class="column is-2 mainContent"
           id="cryptoCurrencyOptions"
           style="background: lightblue"
         >
-          
           <div class="secContainer">
             <div class="divListCrypto" id="divListCrypto">
               <div class="listTop">Crypto Currencies</div>
@@ -66,11 +84,39 @@
                     <section class="modal-card-body">
                       <form id="project-form">
                         <div class="form-group">
-                          <select class="form-control" id="project-type-input">  
-                              <option data-code="btc"   data-name="bitcoin"     id="1" value="BitCoin">Bitcoin</option>
-                              <option data-code="eth"   data-name="ethereum"    id="2" value="Ethereum">Ethereum</option>
-                              <option data-code="ltc"   data-name="litecoin"    id="3" value="Lite coin">Litecoin</option>
-                              <option data-code="usdt"  data-name="tether"      id="4" value="Tether">Tether</option>    
+                          <select class="form-control" id="project-type-input">
+                            <option
+                              data-code="btc"
+                              data-name="bitcoin"
+                              id="1"
+                              value="BitCoin"
+                            >
+                              Bitcoin
+                            </option>
+                            <option
+                              data-code="eth"
+                              data-name="ethereum"
+                              id="2"
+                              value="Ethereum"
+                            >
+                              Ethereum
+                            </option>
+                            <option
+                              data-code="ltc"
+                              data-name="litecoin"
+                              id="3"
+                              value="Lite coin"
+                            >
+                              Litecoin
+                            </option>
+                            <option
+                              data-code="usdt"
+                              data-name="tether"
+                              id="4"
+                              value="Tether"
+                            >
+                              Tether
+                            </option>
                           </select>
                         </div>
                       </form>
@@ -92,17 +138,15 @@
             </div>
           </div>
         </div>
-        <div class=" column is-10">
+        <div class="column is-10">
           <div class="columns">
             <!-- 24 Hour Info -->
             <div
               class="column is-half"
               id="dailyHourInfo"
               style="background: rgb(220, 235, 166)"
-            
             >
-              <h4 style="text-align: center;">24 Hour Information</h4>
-          
+              <h4 style="text-align: center">24 Hour Information</h4>
             </div>
 
             <!-- Historical Data -->
@@ -110,20 +154,25 @@
               class="column is-half"
               id="historicalData"
               style="background: lightblue"
-              
             >
-
               <h4 style="text-align: center">Historical Data</h4>
-              
+
               <div>
                 <!-- Buttons for Historical Data  -->
 
-              <button id="alltime" class="button is-link is-focused data">All time</button>
-              <button id="year" class="button is-link is-focused data">Year</button>
-              <button id="month" class="button is-link is-focused data">Month</button>
-              <button id="week" class="button is-link is-focused data">Week</button>
-            </div>
-
+                <button id="alltime" class="button is-link is-focused data">
+                  All time
+                </button>
+                <button id="year" class="button is-link is-focused data">
+                  Year
+                </button>
+                <button id="month" class="button is-link is-focused data">
+                  Month
+                </button>
+                <button id="week" class="button is-link is-focused data">
+                  Week
+                </button>
+              </div>
             </div>
           </div>
           <div class="columns">
@@ -134,13 +183,9 @@
           </div>
         </div>
       </div>
-
-      
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-
-</body>
-
+  </body>
 </html>
