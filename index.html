@@ -24,7 +24,7 @@
 
 
   <body>
-    <div class="container">
+    <div class="container cryptoDisplay">
       <header>
         <div class="columns">
           <!-- Title -->
@@ -66,7 +66,7 @@
                     <section class="modal-card-body">
                       <form id="project-form">
                         <div class="form-group">
-                          <select class="form-control" id="project-type-input">
+                          <select class="form-control" id="project-type-input">  
                               <option data-code="btc"   data-name="bitcoin"     id="1" value="BitCoin">Bitcoin</option>
                               <option data-code="eth"   data-name="ethereum"    id="2" value="Ethereum">Ethereum</option>
                               <option data-code="ltc"   data-name="litecoin"    id="3" value="Lite coin">Litecoin</option>
@@ -99,8 +99,10 @@
               class="column is-half"
               id="dailyHourInfo"
               style="background: rgb(220, 235, 166)"
+            
             >
-              <h4>24 Hour Information</h4>
+              <h4 style="text-align: center;">24 Hour Information</h4>
+          
             </div>
 
             <!-- Historical Data -->
@@ -108,8 +110,11 @@
               class="column is-half"
               id="historicalData"
               style="background: lightblue"
+              
             >
-              <h4>Historical Data</h4>
+
+              <h4 style="text-align: center">Historical Data</h4>
+              
               <div>
                 <!-- Buttons for Historical Data  -->
 
@@ -118,6 +123,7 @@
               <button id="month" class="button is-link is-focused data">Month</button>
               <button id="week" class="button is-link is-focused data">Week</button>
             </div>
+
             </div>
           </div>
           <div class="columns">
