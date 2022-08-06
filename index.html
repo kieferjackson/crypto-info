@@ -1,192 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crypto-Info</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
 
     <!-- Crypto Info Website Icon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./assets/images/favicons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/images/favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./assets/images/favicons/favicon-16x16.png"
-    />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicons/favicon-16x16.png" />
     <link rel="manifest" href="./assets/images/favicons/site.webmanifest" />
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="container is-fullheight cryptoDisplay">
-      <header>
+        <header>
+            <!-- Title -->
+            <div class="websiteTitle">
+                <img src="./assets/images/ci_logo_v1.png" alt="Crypto Info Logo" width="200" />
+            </div>
+        </header>
+
         <div class="columns">
-          <!-- Title -->
-          <div
-            class="column"
-            style="background: rgb(161, 158, 158)"
-            class="websiteTitle"
-          >
-            <img
-              src="./assets/images/ci_logo_v1.png"
-              alt="Crypto Info Logo"
-              width="200"
-            />
-          </div>
-        </div>
-      </header>
-
-      <div class="columns">
-        <!-- Crypto Currency Options -->
-        <div
-          class="column is-2 mainContent"
-          id="cryptoCurrencyOptions"
-          style="background: lightblue"
-        >
-          <div class="secContainer">
-            <div class="divListCrypto" id="divListCrypto">
-              <div class="listTop">Crypto Currencies</div>
-            </div>
-            <!-- modal pop-up window -->
-            <div id="app">
-              <div id="image-modal" class="modal">
-                <div class="modal-background"></div>
-                <div class="modal-content">
-                  <div class="modal-card">
-                    <header class="modal-card-head">
-                      <p class="modal-card-title">Crypto Currencies</p>
-                      <button
-                        id="image-modal-close"
-                        class="delete"
-                        aria-label="close"
-                      ></button>
-                    </header>
-                    <section class="modal-card-body">
-                      <form id="project-form">
-                        <div class="form-group">
-                          <select class="form-control" id="project-type-input">
-                            <option
-                              data-code="btc"
-                              data-name="bitcoin"
-                              id="1"
-                              value="BitCoin"
-                            >
-                              Bitcoin
-                            </option>
-                            <option
-                              data-code="eth"
-                              data-name="ethereum"
-                              id="2"
-                              value="Ethereum"
-                            >
-                              Ethereum
-                            </option>
-                            <option
-                              data-code="ltc"
-                              data-name="litecoin"
-                              id="3"
-                              value="Lite coin"
-                            >
-                              Litecoin
-                            </option>
-                            <option
-                              data-code="usdt"
-                              data-name="tether"
-                              id="4"
-                              value="Tether"
-                            >
-                              Tether
-                            </option>
-                          </select>
+            <!-- Crypto Currency Options -->
+            <div class="column is-3" id="cryptoCurrencyOptions">
+                <div class="secContainer">
+                    <div class="divListCrypto" id="divListCrypto">
+                        <div class="listTop">Crypto Currencies</div>
+                    </div>
+                    <div id="app">
+                        <div id="image-modal" class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-content">
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Crypto Currencies</p>
+                                        <button id="image-modal-close" class="delete" aria-label="close"></button>
+                                    </header>
+                                    <section class="modal-card-body">
+                                        <form id="project-form">
+                                            <div class="form-group">
+                                                <select class="form-control" id="project-type-input">
+                                                    <option data-code="btc" data-name="bitcoin" id="1" value="BitCoin">
+                                                        Bitcoin
+                                                    </option>
+                                                    <option data-code="eth" data-name="ethereum" id="2"
+                                                        value="Ethereum">
+                                                        Ethereum
+                                                    </option>
+                                                    <option data-code="ltc" data-name="litecoin" id="3"
+                                                        value="Lite coin">
+                                                        Litecoin
+                                                    </option>
+                                                    <option data-code="usdt" data-name="tether" id="4" value="Tether">
+                                                        Tether
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </section>
+                                    <footer class="modal-card-foot">
+                                        <button id="save" class="button is-success">Add</button>
+                                        <button id="cancel" class="button">Cancel</button>
+                                    </footer>
+                                </div>
+                            </div>
                         </div>
-                      </form>
-                    </section>
-                    <footer class="modal-card-foot">
-                      <button id="save" class="button is-success">Add</button>
-                      <button id="cancel" class="button">Cancel</button>
-                    </footer>
-                  </div>
+                        <br />
+                        <button class="button is-primary modal-button modal-custom" id="showModal">
+                            Add
+                        </button>
+                    </div>
                 </div>
-              </div>
-              <br />
-              <button
-                class="button is-primary modal-button modal-custom"
-                id="showModal"
-              >
-                Add
-              </button>
             </div>
-          </div>
+            <div class="column is-9">
+                <div class="columns">
+                    <!-- 24 Hour Info -->
+                    <div class="column is-half" id="dailyHourInfo">
+                        <h4 class="display_heading">24 Hour Information</h4>
+
+                        <!-- Current Information about Crypto Currencies Displays here -->
+                        <section id="current_info_container"></section>
+                    </div>
+
+                    <!-- Historical Data -->
+                    <div class="column is-half" id="historicalData">
+                        <h4 class="display_heading">Historical Data</h4>
+
+                        <!-- Historical Information about Crypto Currencies Displays here -->
+                        <section id="history_info_container"></section>
+
+                        <div>
+                            <!-- Buttons for Historical Data  -->
+
+                            <button id="alltime" class="button is-link is-focused data">
+                                All time
+                            </button>
+                            <button id="year" class="button is-link is-focused data">
+                                Year
+                            </button>
+                            <button id="month" class="button is-link is-focused data">
+                                Month
+                            </button>
+                            <button id="week" class="button is-link is-focused data">
+                                Week
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <!-- Additional Information -->
+                    <div class="column" id="additionalInformation">
+                        <h2 class="display_heading">Additional Information</h2>
+
+                        <!-- Historical Information about Crypto Currencies Displays here -->
+                        <section id="additional_info_container"></section>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="column is-10">
-          <div class="columns">
-            <!-- 24 Hour Info -->
-            <div
-              class="column is-half"
-              id="dailyHourInfo"
-              style="background: rgb(220, 235, 166)"
-            >
-              <h4 style="text-align: center">24 Hour Information</h4>
-            </div>
-
-            <!-- Historical Data -->
-            <div
-              class="column is-half"
-              id="historicalData"
-              style="background: lightblue"
-            >
-              <h4 style="text-align: center">Historical Data</h4>
-
-              <div>
-                <!-- Buttons for Historical Data  -->
-
-                <button id="alltime" class="button is-link is-focused data">
-                  All time
-                </button>
-                <button id="year" class="button is-link is-focused data">
-                  Year
-                </button>
-                <button id="month" class="button is-link is-focused data">
-                  Month
-                </button>
-                <button id="week" class="button is-link is-focused data">
-                  Week
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="columns">
-            <!-- Additional Information -->
-            <div class="column" id="additionalInformation">
-              <h2>Additional Information</h2>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-  </body>
+</body>
+
 </html>
