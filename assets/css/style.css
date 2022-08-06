@@ -89,6 +89,8 @@ header
 #additionalInformation
 {
     text-align: center;
+    background: var(--light-background);
+    margin-bottom: 5px;
 }
 
 #current_info_container,
