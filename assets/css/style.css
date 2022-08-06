@@ -27,9 +27,9 @@ header
 .secContainer
 {
     box-sizing: border-box;
-    border: solid green; 
+    box-shadow: var(--subtle-depth);
     padding-bottom: 10%;    
-    background-color: rgba(205, 247, 177, 0.795);
+    background-color: rgba(177, 247, 230, 0.637);
 }
 
 #cryptoCurrencyOptions 
@@ -45,19 +45,17 @@ header
 
 .listView
 {
-    border-style: solid; 
-     /* margin-left: 20%; */
-    /* margin-right: 20%;  */
+    border: solid whitesmoke;
+    border-radius: 25px;
     text-align: center;
-    background-color: rgba(144, 247, 166, 0.856);
+    background-color: #89e2cc;
 }
 
-.listTop
-{    
-    /* border-style: solid; */
+.listTop {
+    font-weight: bold;
     margin-bottom: 5%;
     text-align: center;
-    background-color: rgba(31, 194, 17, 0.767);
+    background-color: rgba(49, 233, 209, 0.856);
 }
 
 /* Modal Menu Styling */
@@ -130,7 +128,7 @@ header
 .no_change { background-color: rgb(199, 199, 199) }
 
 /* Historical Data Timespan Buttons */
-.data 
+.data-custom
 {
     margin-top: 175px;
     margin-right: 20px;
