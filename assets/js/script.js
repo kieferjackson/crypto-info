@@ -25,8 +25,7 @@ document.addEventListener( 'click', (event) =>
         // Fetch crypto data, and generate data for this currency
         generate_data();
     }
-})
-let crypto_sel_buttons = document.querySelectorAll('.listView');
+});
 
 // Select data info containers
 const current_info_container = document.querySelector('#current_info_container');
@@ -36,7 +35,8 @@ const additional_info_container = document.querySelector('#additional_info_conta
 function generate_data () {
     const base_paprika_url = 'https://api.coinpaprika.com/v1/coins/'; // e.g. eth-ethereum, btc-bitcoin
     const base_gecko_value_url = 'https://api.coingecko.com/api/v3/'; // coins/list gives the list of supported cryptocurrencies
-    // var coin_gecko_versus_url = 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies';
+    // var vs_currencies_url = 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies';
+    // const crypto_coinlist_url = 'https://api.coingecko.com/api/v3/coins/list';
     
     // Change the Paprika url to query for the currently selected cryptocurrency
     let ca_info_url = base_paprika_url + current_crypto.fid;
@@ -51,6 +51,9 @@ function generate_data () {
     // Get the current information for currently selected cryptocurrency
     get_api_data(curr_price_url, 'CURRENT_INFO', null);
     
+    /***************************************************************************************************
+    The following code was commented out due to being unfinished:
+
     const number_of_time_points = 12;
 
     // Generate the historical data object and iterate for each time point (tp)
@@ -62,8 +65,7 @@ function generate_data () {
     }
     
     console.log(historical_data);
-    
-    get_api_data(base_gecko_value_url + 'coins/list');
+    ***************************************************************************************************/
 }
 
 function get_api_data(requested_url, data_to_generate, iteration) 
@@ -163,14 +165,14 @@ fetch(requested_url)
             let change_status, change_sign;
             
             // Set the class for the percent change based on whether it is positive or negative
-            if (current_info.change < 0)
+            if (current_info.change.toFixed(2) < 0)
             {
                 change_status = 'negative_change';
                 // It does not need a sign because it is a negative number and already has a '-' symbol
                 change_sign = ''; 
             }
             
-            else if (current_info.change >= 0.01)
+            else if (current_info.change.toFixed(2) >= 0.01)
             {
                 change_status = 'positive_change';
                 // Indicate that the percent change is positive
