@@ -50,6 +50,7 @@ header
     padding: 2%;
     text-align: center;
     background-color:  #89e2cc;
+    cursor: pointer;
 }
 
 .listTop {
@@ -136,4 +137,14 @@ header
 {
     margin-top: 175px;
     margin-right: 20px;
+}
+.data-custom:hover
+{
+    font-size: 18px;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
+    transform: scale(1.075);
+    
+}
+.data-custom:active{
+    transform: scale(0.975);
 }
