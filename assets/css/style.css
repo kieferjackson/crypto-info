@@ -47,15 +47,17 @@ header
 {
     border: solid whitesmoke;
     border-radius: 25px;
+    padding: 2%;
     text-align: center;
-    background-color: #89e2cc;
+    background-color:  #89e2cc;
 }
 
 .listTop {
     font-weight: bold;
     margin-bottom: 5%;
+    padding: 2%;
     text-align: center;
-    background-color: rgba(49, 233, 209, 0.856);
+    background-color:  #51aa92b2;
 }
 
 /* Modal Menu Styling */
