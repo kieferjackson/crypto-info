@@ -76,4 +76,4 @@ Then a graph/table will be updated with the relevant data.
 
 ## Screenshot of Crypto-Info Application:
 
-<img src="./assets/images/Screen Shot 2022-08-07 at 2.39.28 PM.png">
+<img src="./assets/images/crypto_info_readme_pic.png">
